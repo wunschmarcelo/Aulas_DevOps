@@ -1,11 +1,9 @@
 name: Deploy do Site com GitHub Actions
 
-# O pipeline será disparado a cada 'push' (envio de código) na branch main
 on:
   push:
     branches: ["main"]
 
-# Permissões necessárias para o Actions conseguir publicar no GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -16,21 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Passo 1: Copia os arquivos do seu repositório para a máquina virtual do GitHub
+      # Atualizado para @v4 (garante compatibilidade com o ambiente atual)
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # Passo 2: Configura o ambiente do GitHub Pages
+      # Atualizado para @v5
       - name: Configurar o GitHub Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
-      # Passo 3: Compacta os arquivos HTML, CSS e JS para o envio
+      # Atualizado para @v3 (específica para o ecossistema do Pages atualizado)
       - name: Upload dos arquivos do site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Indica que queremos enviar todos os arquivos da raiz do projeto
+          path: '.'
 
-      # Passo 4: Coloca o site no ar e gera o link público
+      # Atualizado para @v4
       - name: Publicar no GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
